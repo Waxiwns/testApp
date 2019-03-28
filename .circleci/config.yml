@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: selenium/node-chrome:3.141.59-mercury
+      - image: selenium/standalone-chrome:3.141.59-mercury
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
