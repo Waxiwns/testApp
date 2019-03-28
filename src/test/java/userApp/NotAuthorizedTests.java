@@ -1,11 +1,17 @@
+package userApp;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import io.appium.java_client.AppiumDriver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import steps.userApp.*;
+import utils.AppiumDriverFactory;
 
 public class NotAuthorizedTests {
+
+    int timeout = 10000;
 
     String firstTab = "Shopping";
 
@@ -56,7 +62,7 @@ public class NotAuthorizedTests {
     public void setUp() {
         driver = AppiumDriverFactory.getAndroidDriver();
         WebDriverRunner.setWebDriver(driver);
-        Configuration.timeout = 10000;
+        Configuration.timeout = timeout;
     }
 
     @Test
@@ -64,7 +70,7 @@ public class NotAuthorizedTests {
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
-        generalSteps.tapByTab(moreTab);
+        generalSteps.chooseTab(moreTab);
 
 //        get started
         generalSteps.guestDescIsDisplayed(descTitle, moreDesc);
@@ -77,7 +83,7 @@ public class NotAuthorizedTests {
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
-        generalSteps.tapByTab(messagesTab);
+        generalSteps.chooseTab(messagesTab);
 
 //        get started
         generalSteps.guestDescIsDisplayed(descTitle, messagesDesc);
@@ -90,7 +96,7 @@ public class NotAuthorizedTests {
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
-        generalSteps.tapByTab(ordersTab);
+        generalSteps.chooseTab(ordersTab);
 
 //        get started
         generalSteps.guestDescIsDisplayed(descTitle, ordersDesc);
@@ -126,7 +132,7 @@ public class NotAuthorizedTests {
         merchantSteps.shareMerchant();
         enterSteps.enterActivityIsDisplayed();
 
-//        get started!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//        get started !(Get started dialog doesn't show)
         enterSteps.closeEnter();
 
 //        go to store

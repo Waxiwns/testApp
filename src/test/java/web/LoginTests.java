@@ -1,29 +1,33 @@
 package web;
 
+import com.codeborne.selenide.Configuration;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import steps.web.LoginSteps;
 
 import static com.codeborne.selenide.Selenide.close;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class LoginTests {
+
+    Boolean headless = true;
+
     String id = "ejisko@gmail.com";
+
     String pass = "0000";
+
     String incorrectValue = "incorrect";
+
     String localeEn = "EN";
+
     String localeAr = "AR";
+
 
     private LoginSteps step = new LoginSteps();
 
     @Before
     public void setConfiguration(){
-//        Configuration.headless = true;
-    }
-
-    @After
-    public void closeBrowser(){
-        close();
+        Configuration.headless = headless;
     }
 
     @Test
@@ -122,7 +126,10 @@ public class LoginTests {
     public void jsExecute(){
         step.openLoginPage();
         step.visitPage("http://qaru.site/questions/16404796/what-is-javascriptexecutor-in-selenium");
-sleep(5000);
+    }
 
+    @After
+    public void closeBrowser(){
+        close();
     }
 }

@@ -1,6 +1,8 @@
-package web;
+package steps.web;
 
 import com.codeborne.selenide.Configuration;
+import pages.web.DashboardPage;
+import pages.web.LoginPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;

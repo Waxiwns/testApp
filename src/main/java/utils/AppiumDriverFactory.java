@@ -1,3 +1,5 @@
+package utils;
+
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
@@ -7,19 +9,28 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-class AppiumDriverFactory {
+public class AppiumDriverFactory {
 
     private static final String SERVER_URL = "http://127.0.0.1:4723/wd/hub";
 
-    private static final String PLATFORM_IOS = "iOS";
-
     private static final String PLATFORM_ANDROID = "Android";
 
-    static AppiumDriver getAndroidDriver() {
+    private static final String PLATFORM_VERSION = "6.0";
+
+    private static final String DEVICE_NAME = "039f1bcdf0b58ecd";
+
+//    private static final String DEVICE_NAME = "emulator-5554";
+//
+//    private static final String PLATFORM_VERSION = "9";
+
+    private static final String PLATFORM_IOS = "iOS";
+
+
+    public static AppiumDriver getAndroidDriver() {
         return getDriver(PLATFORM_ANDROID);
     }
 
-    static AppiumDriver getIOSDriver() {
+    public static AppiumDriver getIOSDriver() {
         return getDriver(PLATFORM_IOS);
     }
 
@@ -38,20 +49,13 @@ class AppiumDriverFactory {
         }
     }
 
-    //Android driver with preselected apk file
+//    Android driver
     private static DesiredCapabilities getAndroidCapabilities() {
-//        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "9");
-//        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
-
-//        capabilities.setCapability(MobileCapabilityType.FULL_RESET, true);
-//        capabilities.setCapability("appWaitPackage", "com.android.settings");
-//        capabilities.setCapability("appWaitActivity", "com.android.settings.fuelgauge.RequestIgnoreBatteryOptimizations");
-//        capabilities.setCapability(MobileCapabilityType.APP, "C:/Users/User/Documents/GitHub/AQA-Driver-UI/app/Driver (Regression)_com.arammeem.driver.android.regression.apk");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "6.0");
-        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "039f1bcdf0b58ecd");
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM_ANDROID);
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
+        capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
         capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
         capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
         capabilities.setCapability("gpsEnabled", true);
@@ -60,11 +64,10 @@ class AppiumDriverFactory {
 //        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
         capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
         capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
-
         return capabilities;
     }
 
-    //For current state no need for this driver
+//    For current state no need for this driver
     private static DesiredCapabilities getIOSCapabilities() {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "iOS");

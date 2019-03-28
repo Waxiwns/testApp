@@ -1,5 +1,8 @@
+package steps.userApp;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import pages.userApp.GeneralActivity;
 
 public class GeneralActivitySteps {
 
@@ -15,7 +18,7 @@ public class GeneralActivitySteps {
         tab.activeTab(tabName);
     }
 
-    public void tapByTab(String tabName){
+    public void chooseTab(String tabName){
         tab.tapByTab(tabName);
         activeTab(tabName);
     }

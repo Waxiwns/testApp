@@ -1,4 +1,7 @@
+package steps.userApp;
+
 import com.codeborne.selenide.Condition;
+import pages.userApp.AuthorizationActivity;
 
 public class AuthorizationActivitySteps {
 

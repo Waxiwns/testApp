@@ -1,5 +1,9 @@
+package steps.userApp;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import pages.userApp.GeneralActivity;
+import pages.userApp.StoreActivity;
 
 public class StoreActivitySteps extends GeneralActivity {
 
