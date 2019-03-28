@@ -8,7 +8,7 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-#      - image: selenium/node-chrome:3.141.59-mercury
+      - image: selenium/node-chrome:3.141.59-mercury
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -27,17 +27,17 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - testApp-{{ checksum "pom.xml" }}
+            - v1-dependencies-{{ checksum "pom.xml" }}
             # fallback to using the latest cache if no exact match is found
-            - testApp-
+            - v1-dependencies-
 
       - run: mvn dependency:go-offline
 
       - save_cache:
           paths:
             - ~/.m2
-          key: testApp-{{ checksum "pom.xml" }}
+          key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: mvn package
+      - run: mvn tests
 #      - run: echo "A first hello"
