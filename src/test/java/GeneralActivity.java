@@ -14,6 +14,7 @@ public class GeneralActivity {
 
     public void activeTab(String tabName){
         SelenideElement el = $(By.id("bottom_navigation_small_item_title"));
+
         el.shouldBe(Condition.visible);
         el.shouldHave(Condition.text(tabName));
     }
@@ -57,5 +58,13 @@ public class GeneralActivity {
 
     public SelenideElement backBtn(){
         return $(By.xpath("//*[contains(@resource-id, 'toolbar')]/*[contains(@class,'ImageButton')]"));
+    }
+
+    public SelenideElement titleActivity(){
+        return $(By.xpath("//*[contains(@resource-id, 'toolbar')]/*[contains(@class,'TextView')]"));
+    }
+
+    public SelenideElement toolbarSaveBtn(){
+        return $(By.xpath("//*[contains(@resource-id, 'toolbar')]/*[contains(@class,'menuSave')]"));
     }
 }

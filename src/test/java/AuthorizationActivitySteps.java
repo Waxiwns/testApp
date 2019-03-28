@@ -9,9 +9,19 @@ public class AuthorizationActivitySteps {
         authorization.skipForNowLnk().shouldBe(Condition.visible);
     }
 
+    public void getStartedBtnIsDisplayed(){
+        authorization.getStartedBtn().shouldBe(Condition.visible);
+    }
+
     public void clickSkip(){
         skipLnkIsDisplayed();
         authorization.skipForNowLnk().click();
         authorization.skipForNowLnk().click();
+    }
+
+    public void clickStarted(){
+        getStartedBtnIsDisplayed();
+        authorization.getStartedBtn().click();
+        authorization.getStartedBtn().click();
     }
 }

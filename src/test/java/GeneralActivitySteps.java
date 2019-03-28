@@ -33,12 +33,25 @@ public class GeneralActivitySteps {
 
     public void openCart(){
         SelenideElement el = tab.cart();
+
         el.shouldBe(Condition.visible);
         el.click();
     }
 
     public void clickBack(){
         SelenideElement el = tab.backBtn();
+
+        el.shouldBe(Condition.visible);
+        el.click();
+    }
+
+    public void titleActivityShouldBe(String title){
+        tab.titleActivity().shouldHave(Condition.text(title));
+    }
+
+    public void clickToolbarSave(){
+        SelenideElement el = tab.toolbarSaveBtn();
+
         el.shouldBe(Condition.visible);
         el.click();
     }
