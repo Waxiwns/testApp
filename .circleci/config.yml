@@ -38,6 +38,29 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
+
+
+
+
+      - run:
+          name: create docker network
+          command: docker network create grid
+
+      - run:
+          name: install selenium-hub
+          command: docker run -d --rm -p 4444:4444 --net grid --name selenium-hub selenium/hub:3.141.59
+
+      - run:
+          name: install selenium-node
+          command: docker run -d --rm --net grid -e HUB_HOST=selenium-hub -v /dev/shm:/dev/shm selenium/node-chrome:3.141.59
+
+      - run:
+          name: install-npm
+          command: npm install
+
+
+
+
       # run tests!
       - run: mvn -Dtest=LoginTests test
 #      - run: mvn test
