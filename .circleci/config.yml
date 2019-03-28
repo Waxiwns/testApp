@@ -39,5 +39,6 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
       # run tests!
-      - run: mvn test
+      - run: mvn -Dtest=LoginTests test
+#      - run: mvn test
 #      - run: echo "A first hello"
