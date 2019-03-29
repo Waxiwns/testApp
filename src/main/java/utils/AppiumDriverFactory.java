@@ -21,7 +21,7 @@ public class AppiumDriverFactory {
 
     private static final String DEVICE_NAME = "emulator-5554";
 
-//    private static final String PLATFORM_VERSION = "9";
+    private static final String PLATFORM_VERSION = "9";
 
     private static final String PLATFORM_IOS = "iOS";
 
@@ -54,7 +54,7 @@ public class AppiumDriverFactory {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM_ANDROID);
-//        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
+        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
         capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
         capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
