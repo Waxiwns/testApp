@@ -62,12 +62,12 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run:
-          name: Start appium server
-          command: appium &
-      - run:
-          name: Which appium server
-          command: which appium
+#      - run:
+#          name: Start appium server
+#          command: appium &
+#      - run:
+#          name: Which appium server
+#          command: which appium
 
 
 
