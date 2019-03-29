@@ -76,8 +76,8 @@ public class AuthorizedTests {
         System.out.println("Login successful");
     }
 
-    @After
-    public void closeApp(){
-        driver.quit();
-    }
+//    @After
+//    public void closeApp(){
+//        driver.quit();
+//    }
 }
