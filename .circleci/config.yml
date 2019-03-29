@@ -35,6 +35,14 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+
+
+
+      - run: |
+          sudo apt update
+          sudo apt install maven
+          mvn -version
+
       - run: mvn dependency:go-offline
 
 #      - run:
