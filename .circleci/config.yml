@@ -63,7 +63,7 @@ jobs:
 
       - run:
           name: Emulator
-          command: emulator -list-avds
+          command: sudo ./avdmanager list
 
 
 
