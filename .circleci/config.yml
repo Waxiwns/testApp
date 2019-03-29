@@ -63,7 +63,14 @@ jobs:
 
       - run:
           name: Emulator
-          command: sudo ./avdmanager list
+          command: |
+            ls
+            cd home
+            ls
+            cd home/circleci/Android/Sdk/tools
+            ls
+            ./emulator -list-avds
+#            sudo ./avdmanager list
 
 
 
