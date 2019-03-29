@@ -23,7 +23,7 @@ jobs:
       # Customize the JVM maximum heap limit
       JAVA_HOME: /usr/lib/jvm/java-8-openjdk-amd64
       MAVEN_OPTS: -Xmx3200m
-#      ANDROID_HOME: /usr/local/android-sdk-linux
+      ANDROID_HOME: /usr/local/android-sdk-linux
 
     steps:
       - checkout
@@ -72,8 +72,6 @@ jobs:
             cd /home/circleci/testApp/src
             ls
             android list sdk --all
-      #            ./emulator -list-avds
-#            sudo ./avdmanager list
 
 
 
