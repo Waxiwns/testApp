@@ -61,6 +61,10 @@ jobs:
           name: Start appium server
           command: appium &
 
+      - run:
+          name: Emulator
+          command: emulator -list-avds
+
 
 
 
