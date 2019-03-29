@@ -43,7 +43,7 @@ jobs:
           sudo apt install maven
           mvn -version
 
-      - run: mvn dependency:go-offline
+      - run: mvn -e dependency:go-offline
 
 #      - run:
 #          name: Install appiums server
