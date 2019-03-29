@@ -71,6 +71,7 @@ jobs:
             ls
             cd /home/circleci/testApp/src
             ls
+            android list sdk --all
       #            ./emulator -list-avds
 #            sudo ./avdmanager list
 
