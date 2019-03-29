@@ -67,7 +67,7 @@ jobs:
             ls
             cd /home
             ls
-            cd /home/circleci
+            cd /home/circleci/testApp
             ls
             ./emulator -list-avds
 #            sudo ./avdmanager list
