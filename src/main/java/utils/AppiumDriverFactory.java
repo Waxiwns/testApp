@@ -65,7 +65,7 @@ public class AppiumDriverFactory {
 //        capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
 //        capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
         capabilities.setCapability("appPackage", "com.android.settings");
-        capabilities.setCapability("appActivity", "com.android.settings/com.android.settings.Settings");
+        capabilities.setCapability("appActivity", "com.android.settings.Settings");
         return capabilities;
     }
 
