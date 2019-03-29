@@ -10,6 +10,7 @@ import steps.userApp.AuthorizationActivitySteps;
 import steps.userApp.EnterToYouActivitySteps;
 import steps.userApp.GeneralActivitySteps;
 import steps.userApp.MoreTabSteps;
+import steps.web.LoginSteps;
 import utils.AppiumDriverFactory;
 
 public class AuthorizedTests {
@@ -38,6 +39,9 @@ public class AuthorizedTests {
 
     private MoreTabSteps moreSteps = new MoreTabSteps();
 
+    private LoginSteps step = new LoginSteps();
+
+
 
     @Before
     public void setUp() {
@@ -46,19 +50,30 @@ public class AuthorizedTests {
         Configuration.timeout = timeout;
     }
 
+//    @Test
+//    public void authorizeAndGoMore() {
+//        authorizationSteps.clickStarted();
+//        enterSteps.enterActivityIsDisplayed();
+//
+////        sign in
+//        enterSteps.signIn(country, phoneNumber);
+//        generalSteps.activeTab(firstTab);
+//
+////        go to More
+//        generalSteps.chooseTab(moreTab);
+//        moreSteps.titleActivityShouldBe(moreTab);
+//        moreSteps.userNameShouldBe(firstName + " " + secondName);
+//    }
+
     @Test
-    public void authorizeAndGoMore() {
-        authorizationSteps.clickStarted();
-        enterSteps.enterActivityIsDisplayed();
+    public void loginWithValidValues() {
+        String id = "ejisko@gmail.com";
 
-//        sign in
-        enterSteps.signIn(country, phoneNumber);
-        generalSteps.activeTab(firstTab);
+        String pass = "0000";
 
-//        go to More
-        generalSteps.chooseTab(moreTab);
-        moreSteps.titleActivityShouldBe(moreTab);
-        moreSteps.userNameShouldBe(firstName + " " + secondName);
+        step.openLoginPage();
+        step.logInWithCorrectValues(id, pass);
+        System.out.println("Login successful");
     }
 
     @After

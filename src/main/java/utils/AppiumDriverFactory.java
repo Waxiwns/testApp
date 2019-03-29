@@ -15,12 +15,12 @@ public class AppiumDriverFactory {
 
     private static final String PLATFORM_ANDROID = "Android";
 
-    private static final String PLATFORM_VERSION = "6.0";
+//    private static final String PLATFORM_VERSION = "6.0";
 
-    private static final String DEVICE_NAME = "039f1bcdf0b58ecd";
+//    private static final String DEVICE_NAME = "039f1bcdf0b58ecd";
 
-//    private static final String DEVICE_NAME = "emulator-5554";
-//
+    private static final String DEVICE_NAME = "emulator-5554";
+
 //    private static final String PLATFORM_VERSION = "9";
 
     private static final String PLATFORM_IOS = "iOS";
@@ -54,16 +54,16 @@ public class AppiumDriverFactory {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, PLATFORM_ANDROID);
-        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
+//        capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, PLATFORM_VERSION);
         capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, DEVICE_NAME);
         capabilities.setCapability(MobileCapabilityType.CLEAR_SYSTEM_FILES, true);
         capabilities.setCapability(MobileCapabilityType.TAKES_SCREENSHOT, true);
         capabilities.setCapability("gpsEnabled", true);
         capabilities.setCapability("autoGrantPermissions", true);
 
-//        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-        capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
-        capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
+        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+//        capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
+//        capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
         return capabilities;
     }
 

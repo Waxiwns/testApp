@@ -10,6 +10,7 @@ import static com.codeborne.selenide.Selenide.close;
 
 public class LoginTests {
 
+//    Boolean headless = false;
     Boolean headless = true;
 
     String id = "ejisko@gmail.com";
