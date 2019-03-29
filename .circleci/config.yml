@@ -54,7 +54,8 @@ jobs:
       - run:
           name: Install appium server
           command: |
-            sudo npm update -g
+            npm install -g appium
+#            sudo npm update -g
 #            sudo npm install appium
 #            sudo npm install wd
 
