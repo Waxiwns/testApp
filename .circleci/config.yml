@@ -69,7 +69,9 @@ jobs:
             ls
             cd /home/circleci/testApp
             ls
-            ./emulator -list-avds
+            find / -name "android"
+            find / -name "Android"
+#            ./emulator -list-avds
 #            sudo ./avdmanager list
 
 
