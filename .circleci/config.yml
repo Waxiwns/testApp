@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk-node-browsers-legacy
+#      - image: circleci/openjdk:8-jdk-node-browsers-legacy
       - image: circleci/android:api-28
       #      - image: circleci/node:10.15.3
 
@@ -35,13 +35,13 @@ jobs:
 
       - run: mvn dependency:go-offline
 
-#      - run:
-#          name: Install appiums server
-#          command: |
-#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#            sudo apt-get install -y nodejs
-#            sudo apt-get install -y build-essential
-#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+      - run:
+          name: Install appiums server
+          command: |
+            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            sudo apt-get install -y build-essential
+            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
 
       - run:
           name: Install appium server
