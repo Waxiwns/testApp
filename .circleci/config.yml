@@ -66,9 +66,9 @@ jobs:
       - run:
           name: Start appium server
           command: appium &
-#      - run:
-#          name: Which appium server
-#          command: which appium
+      - run:
+          name: Which appium server
+          command: which appium
 
 
 
