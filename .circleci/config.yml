@@ -35,15 +35,15 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-#      - run: mvn dependency:go-offline
+      - run: mvn dependency:go-offline
 
-      - run:
-          name: Install appiums server
-          command: |
-            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            sudo apt-get install -y build-essential
-            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+#      - run:
+#          name: Install appiums server
+#          command: |
+#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#            sudo apt-get install -y nodejs
+#            sudo apt-get install -y build-essential
+#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
 
       - run:
           name: Install appium server
