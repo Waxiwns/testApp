@@ -45,17 +45,11 @@ jobs:
 
       - run:
           name: Install appiums server
-          command:
-#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#            sudo apt-get install -y nodejs
-#            sudo apt-get install -y build-essential
-#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-            sudo apt-get update
-            sudo apt-get install -y curl apt-transport-https ca-certificates &&
-            curl --fail -ssL -o setup-nodejs https://deb.nodesource.com/setup_8.9.4 &&
-            sudo bash setup-nodejs &&
-            sudo apt-get install -y nodejs build-essential
-
+          command: |
+            sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            sudo apt-get install -y build-essential
+            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
 
       - run:
           name: Install appium server
