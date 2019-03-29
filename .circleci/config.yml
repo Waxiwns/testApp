@@ -55,7 +55,7 @@ jobs:
           command: |
             sudo npm update -g
             sudo npm install appium
-            sudo npm install wd
+#            sudo npm install wd
 
       - save_cache:
           paths:
