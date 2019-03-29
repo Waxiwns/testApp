@@ -9,8 +9,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk-browsers
       - image: circleci/android:api-28-alpha
-
-      - image: circleci/node:10.15.3
+#      - image: circleci/node:10.15.3
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -35,13 +34,6 @@ jobs:
             - v1-dependencies-
 
       - run: mvn dependency:go-offline
-
-#      - save_cache:
-#          paths:
-#            - ~/.m2
-#          key: v1-dependencies-{{ checksum "pom.xml" }}
-
-
 
       - run:
           name: Install appiums server
@@ -74,4 +66,5 @@ jobs:
 #      - run: echo "A first hello"
 #      - run: mvn test
 #      - run: mvn -Dtest=LoginTests test
+      - run: mvn -Dtest=LoginTests test
       - run: mvn -Dtest=AuthorizedTests test
