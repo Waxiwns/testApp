@@ -61,17 +61,6 @@ jobs:
           name: Start appium server
           command: appium &
 
-      - run:
-          name: Emulator
-          command: |
-            ls
-            cd /home
-            ls
-            cd /home/circleci/testApp
-            ls
-            cd /home/circleci/testApp/src
-            ls
-            android list sdk --all
 
 
 
