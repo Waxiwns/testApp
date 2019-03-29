@@ -67,12 +67,12 @@ public class AuthorizedTests {
 
     @Test
     public void loginWithValidValues() {
-        String id = "ejisko@gmail.com";
-
-        String pass = "0000";
-
-        step.openLoginPage();
-        step.logInWithCorrectValues(id, pass);
+//        String id = "ejisko@gmail.com";
+//
+//        String pass = "0000";
+//
+//        step.openLoginPage();
+//        step.logInWithCorrectValues(id, pass);
         System.out.println("Login successful");
     }
 
