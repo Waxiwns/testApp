@@ -68,7 +68,7 @@ jobs:
           command: appium &
       - run:
           name: Which appium server
-          command: which appium
+          command: locate appium
 
 
 
