@@ -7,9 +7,9 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/openjdk:8-jdk-browsers
       - image: circleci/android:api-28-alpha
-#      - image: circleci/node:10.15.3
+      - image: circleci/openjdk:8-jdk-browsers
+      #      - image: circleci/node:10.15.3
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -66,5 +66,4 @@ jobs:
 #      - run: echo "A first hello"
 #      - run: mvn test
 #      - run: mvn -Dtest=LoginTests test
-      - run: mvn -Dtest=LoginTests test
       - run: mvn -Dtest=AuthorizedTests test
