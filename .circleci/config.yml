@@ -84,11 +84,11 @@ jobs:
 #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
           background: true
 
-      - run:
-          name: Wait emulator
-          command: |
-            circle-android wait-for-boot
-            adb shell input keyevent 82
+#      - run:
+#          name: Wait emulator
+#          command: |
+#            circle-android wait-for-boot
+#            adb shell input keyevent 82
 
       - save_cache:
           paths:
