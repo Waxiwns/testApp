@@ -77,4 +77,4 @@ jobs:
 #      - run: echo "A first hello"
 #      - run: mvn test
 #      - run: mvn -Dtest=LoginTests test
-      - run: mvn -Dtest=AuthorizedTests test
+      - run: mvn dependency :: tree -Dtest=AuthorizedTests test
