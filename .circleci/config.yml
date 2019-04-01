@@ -80,6 +80,7 @@ jobs:
       - run:
           name: Launch Emulator
           command: |
+            apt-get install libqt5widgets5
             cd ${ANDROID_HOME}/emulator
             ls
             emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
