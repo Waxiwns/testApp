@@ -10,7 +10,7 @@ jobs:
       # specify the version you desire here
       #      - image: circleci/openjdk:8-jdk-node-browsers-legacy
 
-          - image: circleci/android:api-26-alpha
+          - image: circleci/android:api-28-alpha
 #          - image: circleci/node:10.15.3
 
     # Specify service dependencies here if necessary
@@ -61,7 +61,7 @@ jobs:
 #            npm install wd
       - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-22;default;armeabi-v7a" | sdkmanager --licenses | echo "yes" | avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+          command: sdkmanager "system-images;android-21;default;armeabi-v7a" | sdkmanager --licenses | echo "yes" | avdmanager create avd -n test -k "system-images;android-21;default;armeabi-v7a"
 
       - run:
           name: Launch emulator
