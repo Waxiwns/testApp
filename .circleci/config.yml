@@ -71,23 +71,29 @@ jobs:
 
       - run:
           name: Create emulator
-          command: echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+          command: |
+            echo "n" | avdmanager -v create avd -n androidlearn -k "system-images;android-25;google_apis;armeabi-v7a" -c 512M -g google_apis  -d "Nexus 7 2013"
+#          command: echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
-
+      - run:
+          name: Run Emulator
+          background: true
+          command: |
+            $ANDROID_SDK_ROOT/tools/emulator -no-window -noaudio -no-boot-anim -gpu swiftshader @androidlearn
 #      - run:
 #          name: Launch emulator
 #          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
 #          background: true
 
-      - run:
-          name: Launch Emulator
-          command: |
-            cd ${ANDROID_HOME}/emulator
-            ls
-            echo %ANDROID_HOME%
-            export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
-          background: true
+#      - run:
+#          name: Launch Emulator
+#          command: |
+#            cd ${ANDROID_HOME}/emulator
+#            ls
+#            echo %ANDROID_HOME%
+#            export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
+#            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+#          background: true
 
       - run:
           name: Wait emulator
