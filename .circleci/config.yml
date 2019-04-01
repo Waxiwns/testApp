@@ -61,9 +61,9 @@ jobs:
 #            npm install appium
 #            npm install wd
 
-      - run:
-          name: List what is currently installed
-          command: sdkmanager --list
+#      - run:
+#          name: List what is currently installed
+#          command: sdkmanager --list
 
       - run:
           name: Setup emulator
