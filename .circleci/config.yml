@@ -38,35 +38,35 @@ jobs:
 
       - run: mvn dependency:go-offline
 
-      - run:
-          name: Install appiums server
-          command: |
-            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            sudo apt-get install -y build-essential
-            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-
-      - run:
-          name: Install appium server
-          command: |
-            sudo npm update -g
-            npm install appium
-            npm install wd
+#      - run:
+#          name: Install appiums server
+#          command: |
+#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#            sudo apt-get install -y nodejs
+#            sudo apt-get install -y build-essential
+#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+#
+#      - run:
+#          name: Install appium server
+#          command: |
+#            sudo npm update -g
+#            npm install appium
+#            npm install wd
 
       - run:
           name: List what is currently installed
           command: sdkmanager --list
 
-      - run:
-          name: Setup emulator
-          command: echo yes | sdkmanager "system-images;android-27;google_apis_playstore;x86" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+#      - run:
+#          name: Setup emulator
+#          command: echo yes | sdkmanager "system-images;android-27;google_apis_playstore;x86" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
           name: Create emulator
           command: |
             sdkmanager --list
-            echo "no" |avdmanager create avd -n test -k "system-images;android-27;google_apis_playstore;x86"
+            echo "no" |avdmanager create avd -n test -k "extras;google;google_play_services"
             emulator -list-avds
 
 
@@ -82,7 +82,8 @@ jobs:
             ls
             emulator -list-avds
             export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+            emulator64-arm -avd test
+#            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
           background: true
 
 #      - run:
