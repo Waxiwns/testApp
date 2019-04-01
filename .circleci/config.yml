@@ -83,7 +83,7 @@ jobs:
             ls
             cd lib64
             ls
-            cd gt
+            cd qt
             ls
             cd lib
             ls
