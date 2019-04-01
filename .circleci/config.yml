@@ -61,7 +61,8 @@ jobs:
 #            npm install wd
       - run:
           name: Setup emulator
-          command: sdkmanager "system-images;android-28;google_apis_playstore;x86_64" | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+#          command: sdkmanager "system-images;android-28;google_apis_playstore;x86_64" | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 #          command: sdkmanager "system-images;android-28;default;armeabi-v7a" | sdkmanager --licenses | echo "yes" | sdkmanager --list
 
       - run:
