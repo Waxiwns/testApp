@@ -7,9 +7,9 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      #      - image: circleci/openjdk:8-jdk-node-browsers-legacy
+            - image: circleci/openjdk:8-jdk-node-browsers-legacy
 
-          - image: circleci/android:api-28-alpha
+#          - image: circleci/android:api-28-alpha
 #          - image: circleci/node:10.15.3
 
     working_directory: ~/testApp
@@ -39,10 +39,10 @@ jobs:
 
 
 
-      - run: |
-          sudo apt update
-          sudo apt install maven
-          mvn -version
+#      - run: |
+#          sudo apt update
+#          sudo apt install maven
+#          mvn -version
 
       - run: mvn dependency:go-offline
 
@@ -65,9 +65,9 @@ jobs:
           name: List what is currently installed
           command: sdkmanager --list
 
-#      - run:
-#          name: Setup emulator
-#          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+      - run:
+          name: Setup emulator
+          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
           name: Create emulator
