@@ -88,8 +88,9 @@ jobs:
       - run:
           name: Wait emulator
           command: |
-            circle-android wait-for-boot
-            adb shell input keyevent 82
+            adb devices
+#            circle-android wait-for-boot
+#            adb shell input keyevent 82
 
       - save_cache:
           paths:
