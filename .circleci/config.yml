@@ -57,15 +57,15 @@ jobs:
           name: List what is currently installed
           command: sdkmanager --list
 
-#      - run:
-#          name: Setup emulator
-#          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+      - run:
+          name: Setup emulator
+          command: echo yes | sdkmanager "system-images;android-26;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
           name: Create emulator
           command: |
             emulator -list-avds
-            echo "n" | avdmanager create avd -n test -k "platforms;android-28;extras;google;google_play_services"
+            echo "no" |avdmanager create avd -n test -k "system-images;android-26;google_apis_playstore;x86_64"
 #          command: echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
 
