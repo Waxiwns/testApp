@@ -64,7 +64,7 @@ jobs:
       - run:
           name: Create emulator
           command: |
-            echo "n" | avdmanager -v create avd -n androidlearn -k "system-images;android-28;extras;google;google_play_services" -c 512M -g google_apis  -d "Nexus 7 2013"
+            echo "n" | avdmanager create avd -n test -k "system-images;android-28;default"
 #          command: echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
 
