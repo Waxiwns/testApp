@@ -81,6 +81,9 @@ jobs:
             cd ${ANDROID_HOME}/emulator
             ls
             emulator -list-avds
+            cd $ANDROID_HOME/emulator/lib64/libstdc++
+            mv libstdc++.so.6 libstdc++.so.6.bak
+            ln -s /usr/lib64/libstdc++.so.6 $ANDROID_HOME/emulator/lib64/libstdc++
             export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
             emulator -avd test
 #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
