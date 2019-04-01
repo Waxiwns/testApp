@@ -65,7 +65,7 @@ jobs:
           name: Create emulator
           command: |
             emulator -list-avds
-            echo "n" | avdmanager create avd -n test -k "system-images; android-28; google_apis; x86"
+            echo "n" | avdmanager create avd -n test -k "platforms;android-28;extras;google;google_play_services"
 #          command: echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
 
