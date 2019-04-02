@@ -65,6 +65,7 @@ jobs:
           name: Create emulator
           command: |
             sdkmanager --update
+            sudo apt-get update
             sdkmanager --list
             echo "no" |avdmanager create avd -n test -k "system-images;android-21;default;armeabi-v7a"
             emulator -list-avds
