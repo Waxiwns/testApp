@@ -32,7 +32,7 @@ jobs:
             - v1-dependencies-
 
       - run: |
-          apt install maven
+          sudo apt install maven
           mvn -version
       - run: mvn dependency:go-offline
 
