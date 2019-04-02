@@ -31,11 +31,11 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-#      - run: |
-#          apt update
-#          apt install maven
-#          mvn -version
-#      - run: mvn dependency:go-offline
+      - run: |
+          apt update
+          apt install maven
+          mvn -version
+      - run: mvn dependency:go-offline
 
 #      - run:
 #          name: Install appiums server
@@ -54,7 +54,10 @@ jobs:
 
       - run:
           name: List what is currently installed
-          command: sdkmanager --list
+          command: |
+            cd ${ANDROID_HOME}/tools
+            ls
+            sdkmanager --list
 
       - run:
           name: Setup emulator
