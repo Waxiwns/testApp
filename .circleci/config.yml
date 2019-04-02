@@ -35,8 +35,10 @@ jobs:
           sudo apt update
           sudo apt install maven
           mvn -version
+          sudo dpkg --add-architecture i386
           sudo apt-get update
           sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6
+          sudo apt-get install libbz2-1.0:i386
 
       - run: mvn dependency:go-offline
 
