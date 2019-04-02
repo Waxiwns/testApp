@@ -38,7 +38,7 @@ jobs:
           sudo dpkg --add-architecture i386
           sudo apt-get update
           sudo apt-get install libz1 libncurses5 libbz2-1.0:i386 libstdc++6 libbz2-1.0
-          apt-get install libpulse0:i386
+          sude apt-get install libpulse0:i386
       - run: mvn dependency:go-offline
 
 #      - run:
