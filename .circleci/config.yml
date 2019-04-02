@@ -67,7 +67,8 @@ jobs:
           command: |
             sdkmanager --list
             sdkmanager --update
-            sudo apt-get install libpulse0:i386
+            sudo apt-get update
+            sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0 lib32stdc++6
             echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
             emulator -list-avds
 
