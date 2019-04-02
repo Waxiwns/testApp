@@ -59,7 +59,7 @@ jobs:
 
       - run:
           name: Setup emulator
-          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+          command: echo yes | sdkmanager "platforms;android-28" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
@@ -68,7 +68,7 @@ jobs:
             sdkmanager --list
             sdkmanager --update
             sudo apt-get update
-            echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+            echo "no" |avdmanager create avd -n test -k "platforms;android-28"
             emulator -list-avds
 
 
@@ -80,6 +80,8 @@ jobs:
       - run:
           name: Launch Emulator
           command: |
+            cd ${ANDROID_HOME}/emulator
+            ls
             export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
             emulator -avd test -noaudio -no-boot-anim -no-window -accel on
 #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
