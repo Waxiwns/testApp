@@ -59,14 +59,14 @@ jobs:
 
       - run:
           name: Setup emulator
-          command: echo yes | sdkmanager "system-images;android-27;google_apis_playstore;x86" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+          command: echo yes | sdkmanager "system-images;android-28;google_apis;x86" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
           name: Create emulator
           command: |
             sdkmanager --list
-            echo "no" |avdmanager create avd -n test -k "system-images;android-27;google_apis_playstore;x86"
+            echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis;x86"
             emulator -list-avds
 
 
@@ -80,22 +80,17 @@ jobs:
           command: |
             cd ${ANDROID_HOME}/emulator
             ls
-            cd qemu/linux-x86_64
-            ls
-            cd ..
-            cd ..
-            emulator -list-avds
             export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-            emulator -avd test
+            emulator -avd test -noaudio -no-boot-anim -no-window -accel on
 #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
           background: true
 
-#      - run:
-#          name: Wait emulator
-#          command: |
-#            adb devices
-#            circle-android wait-for-boot
-#            adb shell input keyevent 82
+      - run:
+          name: Wait emulator
+          command: |
+            adb devices
+            circle-android wait-for-boot
+            adb shell input keyevent 82
 
       - save_cache:
           paths:
