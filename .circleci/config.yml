@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: runmymind/docker-android-sdk:ubuntu-standalone
+      - image: runmymind/docker-android-sdk:latest
 
     working_directory: ~/testApp
 
@@ -31,11 +31,11 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: |
-          apt update
-          echo y | apt install maven
-          mvn -version
-      - run: mvn dependency:go-offline
+#      - run: |
+#          apt update
+#          apt install maven
+#          mvn -version
+#      - run: mvn dependency:go-offline
 
 #      - run:
 #          name: Install appiums server
