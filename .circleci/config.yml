@@ -62,12 +62,12 @@ jobs:
 #          command: echo yes | sdkmanager "system-images;android-21;default;armeabi-v7a" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
       #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
-      - run:
-          name: Update emulator
-          command: |
-            sdkmanager --update
-            sudo apt-get update
-            sdkmanager --list
+#      - run:
+#          name: Update emulator
+#          command: |
+#            sdkmanager --update
+#            sudo apt-get update
+#            sdkmanager --list
 
       - run:
           name: Create emulator
