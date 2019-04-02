@@ -35,6 +35,8 @@ jobs:
           sudo apt update
           sudo apt install maven
           mvn -version
+          sudo apt-get update
+          sudo apt-get install libxtst6 libgconf-2-4 libnss3 libasound2
 
       - run: mvn dependency:go-offline
 
