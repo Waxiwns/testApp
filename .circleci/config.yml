@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: runmymind/docker-android-sdk:latest
+      - image: circleci/android:api-28-alpha
 
     working_directory: ~/testApp
 
@@ -32,58 +32,49 @@ jobs:
             - v1-dependencies-
 
       - run: |
+          sudo apt update
           sudo apt install maven
           mvn -version
       - run: mvn dependency:go-offline
 
-#      - run:
-#          name: Install appiums server
-#          command: |
-#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#            sudo apt-get install -y nodejs
-#            sudo apt-get install -y build-essential
-#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-#
-#      - run:
-#          name: Install appium server
-#          command: |
-#            sudo npm update -g
-#            npm install appium
-#            npm install wd
+      #      - run:
+      #          name: Install appiums server
+      #          command: |
+      #            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+      #            sudo apt-get install -y nodejs
+      #            sudo apt-get install -y build-essential
+      #            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+      #
+      #      - run:
+      #          name: Install appium server
+      #          command: |
+      #            sudo npm update -g
+      #            npm install appium
+      #            npm install wd
 
       - run:
           name: List what is currently installed
-          command: |
-            cd ${ANDROID_HOME}/tools
-            ls
-            sdkmanager --list
+          command: sdkmanager --list
 
       - run:
           name: Setup emulator
           command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
-#          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+      #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
           name: Create emulator
           command: |
+            sdkmanager --list
+            sdkmanager --update
+            sudo apt-get update
             echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
-#            sdkmanager --list
-#            sdkmanager --update
-#            sudo apt-get update
-#            echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
-#            emulator -list-avds
+            emulator -list-avds
 
 
-#      - run:
-#          name: Launch emulator
-#          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
-#          background: true
-
-#      - run: |
-#          sudo dpkg --add-architecture i386
-#          sudo apt-get update
-#          sudo apt-get install libz1 libncurses5 libbz2-1.0:i386 libstdc++6 libbz2-1.0
-#          sudo apt-get install libpulse0:i386
+      #      - run:
+      #          name: Launch emulator
+      #          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+      #          background: true
 
       - run:
           name: Launch Emulator
@@ -91,8 +82,9 @@ jobs:
             cd ${ANDROID_HOME}/emulator
             ls
             export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
+            emulator -avd test -noaudio -no-boot-anim -no-window -accel on
           background: true
+      #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
 
       - run:
           name: Wait emulator
@@ -105,7 +97,7 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-#
+      #
       - run:
           name: Start appium server
           command: appium &
@@ -115,7 +107,7 @@ jobs:
 
 
       # run tests!
-#      - run: echo "A first hello"
-#      - run: mvn test
-#      - run: mvn -Dtest=LoginTests test
+      #      - run: echo "A first hello"
+      #      - run: mvn test
+      #      - run: mvn -Dtest=LoginTests test
       - run: mvn -Dtest=AuthorizedTests test
