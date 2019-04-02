@@ -52,22 +52,20 @@ jobs:
       #            npm install appium
       #            npm install wd
 
-      - run:
-          name: List what is currently installed
-          command: sdkmanager --list
+#      - run:
+#          name: List what is currently installed
+#          command: sdkmanager --list
 
       - run:
           name: Setup emulator
-          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+          command: echo yes | sdkmanager "system-images;android-21;default;armeabi-v7a" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
       #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
       - run:
           name: Create emulator
           command: |
             sdkmanager --list
-            sdkmanager --update
-            sudo apt-get update
-            echo "no" |avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+            echo "no" |avdmanager create avd -n test -k "system-images;android-21;default;armeabi-v7a"
             emulator -list-avds
 
 
