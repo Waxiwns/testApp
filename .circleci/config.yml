@@ -87,6 +87,8 @@ jobs:
           command: |
             circle-android wait-for-boot
             adb shell input keyevent 82
+            adb shell
+            dumpsys window windows | grep 'mCurrentFocus'
 
 #
 #      - run:
@@ -171,8 +173,8 @@ jobs:
       - run: mvn -Dtest=AuthorizedTests test
 
       - store_artifacts:
-          path: app/build/reports
+          path: testApp/build/reports
           destination: reports
 
       - store_test_results:
-                path: app/build/test-results
+                path: testApp/build/test-results
