@@ -59,7 +59,8 @@ jobs:
 
       - run:
           name: Setup emulator
-          command: echo yes | sdkmanager "system-images;android-22;default;armeabi-v7a" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
+          command: sdkmanager "platform-tools" "platforms;android-22" "emulator" "system-images;android-22;default;armeabi-v7a" && echo "no"
+#          command: echo yes | sdkmanager "system-images;android-22;default;armeabi-v7a" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 #          command: echo yes | sdkmanager "system-images;android-21;default;armeabi-v7a" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
       #          command: echo yes | sdkmanager "system-images;android-28;google_apis_playstore;x86_64" # | sdkmanager --licenses #| echo "y" #| avdmanager create avd -n test -k "system-images;android-28;google_apis_playstore;x86_64"
 
@@ -72,9 +73,10 @@ jobs:
 
       - run:
           name: Create emulator
-          command: |
-            echo "no" |avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
-            emulator -list-avds
+          command: avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+#          command: |
+#            echo "no" |avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+#            emulator -list-avds
 
 
       #      - run:
