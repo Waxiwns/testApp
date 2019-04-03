@@ -33,9 +33,9 @@ jobs:
             - v1-dependencies-
 
       - run: |
-          sudo apt update
-          sudo apt install maven
           mvn -version
+          apt update
+          apt install maven
       - run: mvn dependency:go-offline
 
 #      - run:
