@@ -61,7 +61,9 @@ public class AppiumDriverFactory {
         capabilities.setCapability("gpsEnabled", true);
         capabilities.setCapability("autoGrantPermissions", true);
 
-        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+//        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+        capabilities.setCapability("appPackage", "com.android.launcher");
+        capabilities.setCapability("appActivity", "com.android.launcher2.Launcher");
 //        capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
 //        capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
 //        capabilities.setCapability("appPackage", "com.android.settings");
