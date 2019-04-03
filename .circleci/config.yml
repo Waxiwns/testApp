@@ -34,6 +34,16 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
+      - run:
+          name: Install appium server
+          command: |
+            sudo npm update -g
+            npm install appium
+            npm install wd
+
+      - run:
+          name: Start appium server
+          command: appium &
 
       - run:
           name: Lists installed targets
@@ -71,12 +81,7 @@ jobs:
             sudo apt-get install -y build-essential
             sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
 
-      - run:
-          name: Install appium server
-          command: |
-            sudo npm update -g
-            npm install appium
-            npm install wd
+
 #
 #      - run:
 #          name: List what is currently installed
@@ -148,9 +153,7 @@ jobs:
 #            - ~/.m2
 #          key: v1-dependencies-{{ checksum "pom.xml" }}
       #
-      - run:
-          name: Start appium server
-          command: appium &
+
 
 
 
