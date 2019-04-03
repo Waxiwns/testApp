@@ -34,24 +34,24 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
 
-      - run:
-          name: Install appiums server
-          command: |
-            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-            sudo apt-get install -y nodejs
-            sudo apt-get install -y build-essential
-            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-
-      - run:
-          name: Install appium server
-          command: |
-            sudo npm update -g
-            npm install appium
-            npm install wd
+#      - run:
+#          name: Install appiums server
+#          command: |
+#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#            sudo apt-get install -y nodejs
+#            sudo apt-get install -y build-essential
+#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+#
+#      - run:
+#          name: Install appium server
+#          command: |
+#            sudo npm update -g
+#            npm install appium
+#            npm install wd
 
       - run:
           name: Start appium server
-          command: appium
+          command: appium &
           background: true
 
       - run:
