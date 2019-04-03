@@ -23,9 +23,9 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: |
-          sudo apt install maven
-          mvn -version
+#      - run: |
+#          sudo apt install maven
+#          mvn -version
 
       - run: mvn dependency:go-offline
 
@@ -49,10 +49,10 @@ jobs:
 #            npm install appium
 #            npm install wd
 
-      - run:
-          name: Start appium server
-          command: appium &
-          background: true
+#      - run:
+#          name: Start appium server
+#          command: appium &
+#          background: true
 
       - run:
           name: Lists installed targets
