@@ -33,9 +33,9 @@ jobs:
             - v1-dependencies-
 
       - run: |
-          mvn -version
           apt update
           apt install maven
+          mvn -version
       - run: mvn dependency:go-offline
 
 #      - run:
