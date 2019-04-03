@@ -76,7 +76,7 @@ jobs:
             emulator -avd test -no-window -noaudio -no-boot-anim -no-window -accel on
           background: true
 
-      -run:
+      - run:
           command: |
             cd ${ANDROID_HOME}/emulator
             emulator -list-avds
