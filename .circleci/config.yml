@@ -8,7 +8,7 @@ jobs:
     working_directory: ~/testApp
 
     docker:
-      - image: circleci/android:api-28-alpha
+      - image: circleci/android:api-27-node8-alpha
 
     environment:
       JVM_OPTS: -Xmx3200m
