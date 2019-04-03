@@ -70,11 +70,11 @@ jobs:
 #            sudo apt-get update
 #            sdkmanager --list
 
-#      - run:
-#          name: Create emulator
-#          command: |
-#            echo "no" |avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
-#            emulator -list-avds
+      - run:
+          name: Create emulator
+          command: |
+            echo "no" |avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+            emulator -list-avds
 
 
       #      - run:
@@ -82,26 +82,26 @@ jobs:
       #          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
       #          background: true
 
-#      - run:
-#          name: Launch Emulator
-#          command: |
-#            cd ${ANDROID_HOME}/emulator
-#            ls
-#            export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-#            emulator -avd test -noaudio -no-boot-anim -no-window -accel on
-#            adb devices
-#          background: true
+      - run:
+          name: Launch Emulator
+          command: |
+            cd ${ANDROID_HOME}/emulator
+            ls
+            export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
+            emulator -avd test -noaudio -no-boot-anim -no-window -accel on
+            adb devices
+          background: true
       #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
 
 
-      - run:
-        name: Setup emulator
-        command: sdkmanager "platform-tools" "platforms;android-22" "emulator" "system-images;android-22;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
-
-      - run:
-        name: Launch emulator
-        command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on -gpu off
-        background: true
+#      - run:
+#        name: Setup emulator
+#        command: sdkmanager "platform-tools" "platforms;android-22" "emulator" "system-images;android-22;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
+#
+#      - run:
+#        name: Launch emulator
+#        command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on -gpu off
+#        background: true
 
 
 
