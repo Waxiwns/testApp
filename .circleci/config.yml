@@ -34,7 +34,7 @@ jobs:
 
       - run: |
           apt update
-          apt install maven
+          apt install maven | echo y
           mvn -version
       - run: mvn dependency:go-offline
 
