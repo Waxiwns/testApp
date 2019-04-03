@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class AppiumDriverFactory {
 
-    private static final String SERVER_URL = "http://0.0.0.0:5037/wd/hub";
+    private static final String SERVER_URL = "http://0.0.0.0:4723/wd/hub";
 
     private static final String PLATFORM_ANDROID = "Android";
 
