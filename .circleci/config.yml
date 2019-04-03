@@ -94,9 +94,6 @@ jobs:
           background: true
       #            emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
 
-      - run:
-          commmand: adb devices
-
 #      - run:
 #        name: Setup emulator
 #        command: sdkmanager "platform-tools" "platforms;android-22" "emulator" "system-images;android-22;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-22;default;armeabi-v7a"
@@ -111,6 +108,7 @@ jobs:
       - run:
           name: Wait emulator
           command: |
+            adb devices
             circle-android wait-for-boot
             adb shell input keyevent 82
 
