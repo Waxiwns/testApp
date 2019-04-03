@@ -51,7 +51,7 @@ jobs:
 
       - run:
           name: Start appium server
-          command: appium &
+          command: appium
           background: true
 
       - run:
