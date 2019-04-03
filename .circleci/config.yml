@@ -52,6 +52,7 @@ jobs:
       - run:
           name: Start appium server
           command: appium &
+          background: true
 
       - run:
           name: Lists installed targets
