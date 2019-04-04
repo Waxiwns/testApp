@@ -73,7 +73,7 @@ jobs:
           command: |
             cd ${ANDROID_HOME}/emulator;ls
             export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
-            emulator -avd test -no-window -noaudio -no-boot-anim -no-window -accel on
+            emulator64-arm -avd test -no-window -noaudio -no-boot-anim -no-window -accel on
           background: true
 
       - run:
@@ -148,18 +148,7 @@ jobs:
 #          command: export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib && emulator64-arm -avd test -noaudio -no-boot-anim -no-window -accel on
 #          background: true
 #
-#      - run:
-#          name: Wait emulator
-#          command: |
-#            adb devices
-#            circle-android wait-for-boot
-#            adb shell input keyevent 82
 #
-#      - save_cache:
-#          paths:
-#            - ~/.m2
-#          key: v1-dependencies-{{ checksum "pom.xml" }}
-      #
 
 
 

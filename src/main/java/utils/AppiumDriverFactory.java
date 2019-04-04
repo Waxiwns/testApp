@@ -27,7 +27,6 @@ public class AppiumDriverFactory {
 
 
     public static AppiumDriver getAndroidDriver() {
-        System.out.println("DEBAG!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return getDriver(PLATFORM_ANDROID);
     }
 
@@ -36,12 +35,10 @@ public class AppiumDriverFactory {
     }
 
     private static AppiumDriver getDriver(String platform) {
-        System.out.println("DEBAG1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         URL serverUrl;
         try {
             serverUrl = new URL(SERVER_URL);
-            System.out.println("DEBAG2!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
         } catch (MalformedURLException e) {
             throw new RuntimeException("Invalid appium server url: " + SERVER_URL);
@@ -50,8 +47,6 @@ public class AppiumDriverFactory {
         if (PLATFORM_IOS.equals(platform)) {
             return new IOSDriver(serverUrl, getIOSCapabilities());
         } else {
-            System.out.println("DEBAG3!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
             return new AndroidDriver(serverUrl, getAndroidCapabilities());
         }
     }
