@@ -49,9 +49,9 @@ jobs:
 #            npm install appium
 #            npm install wd
 
-#      - run:
-#          name: Start appium server
-#          command: appium &
+      - run:
+          name: Start appium server
+          command: appium &
 #          background: true
 
       - run:
