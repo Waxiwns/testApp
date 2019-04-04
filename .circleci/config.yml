@@ -41,7 +41,8 @@ jobs:
           name: Install appium server
           command: |
             sudo npm update -g
-            npm install appium
+            npm init
+            npm install -g appium
             npm install wd
 
       - save_cache:
@@ -51,7 +52,7 @@ jobs:
 
       - run:
           name: Start appium server
-          command: appium
+          command: appium &
           background: true
 
       - run:
