@@ -50,35 +50,35 @@ public class AuthorizedTests {
         Configuration.timeout = timeout;
     }
 
-//    @Test
-//    public void authorizeAndGoMore() {
-//        authorizationSteps.clickStarted();
-//        enterSteps.enterActivityIsDisplayed();
-//
-////        sign in
-//        enterSteps.signIn(country, phoneNumber);
-//        generalSteps.activeTab(firstTab);
-//
-////        go to More
-//        generalSteps.chooseTab(moreTab);
-//        moreSteps.titleActivityShouldBe(moreTab);
-//        moreSteps.userNameShouldBe(firstName + " " + secondName);
-//    }
+    @Test
+    public void authorizeAndGoMore() {
+        authorizationSteps.clickStarted();
+        enterSteps.enterActivityIsDisplayed();
+
+//        sign in
+        enterSteps.signIn(country, phoneNumber);
+        generalSteps.activeTab(firstTab);
+
+//        go to More
+        generalSteps.chooseTab(moreTab);
+        moreSteps.titleActivityShouldBe(moreTab);
+        moreSteps.userNameShouldBe(firstName + " " + secondName);
+    }
 
     @Test
     public void loginWithValidValues() {
         System.out.println("CONNECTED");
-//        String id = "ejisko@gmail.com";
-//
-//        String pass = "0000";
-//
-//        step.openLoginPage();
-//        step.logInWithCorrectValues(id, pass);
-//        System.out.println("Login successful");
+        String id = "ejisko@gmail.com";
+
+        String pass = "0000";
+
+        step.openLoginPage();
+        step.logInWithCorrectValues(id, pass);
+        System.out.println("Login successful");
     }
 
-//    @After
-//    public void closeApp(){
-//        driver.quit();
-//    }
+    @After
+    public void closeApp(){
+        driver.quit();
+    }
 }

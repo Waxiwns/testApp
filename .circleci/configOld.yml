@@ -1,0 +1,123 @@
+#   #For Android Tests
+#version: 2
+#jobs:
+#  build:
+#    working_directory: ~/testApp
+#
+#    docker:
+#      - image: circleci/android:api-27-node8-alpha
+#
+#    environment:
+#      JVM_OPTS: -Xmx3200m
+#      _JAVA_OPTIONS: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+#
+#    steps:
+#      - checkout
+#
+#      - restore_cache:
+#          keys:
+#            - v1-dependencies-{{ checksum "pom.xml" }}
+#            # fallback to using the latest cache if no exact match is found
+#            - v1-dependencies-
+#
+#      - run: |
+#          sudo apt install maven
+#          mvn -version
+#
+#      - run: mvn dependency:go-offline
+#
+#      - run:
+#          name: Install appiums server
+#          command: |
+#            curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+#            sudo apt-get install -y nodejs
+#            sudo apt-get install -y build-essential
+#            sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
+#
+#      - run:
+#          name: Install appium server
+#          command: |
+#            sudo npm update -g
+#            sudo npm install -g appium --unsafe-perm=true --allow-root
+#            sudo npm install -g wd --unsafe-perm=true --allow-root
+#
+#      - save_cache:
+#          paths:
+#            - ~/.m2
+#          key: v1-dependencies-{{ checksum "pom.xml" }}
+#
+#      - run:
+#          name: Start appium server
+#          command: appium
+#          background: true
+#
+#      - run:
+#          name: Lists installed targets
+#          command: android list target
+#          environment:
+#          TERM: dumb
+#
+#      - run:
+#          name: Show list of system-images
+#          command: sdkmanager --list --verbose | grep system-images
+#
+#      - run:
+#          name: Setup Emulator
+#          command: echo yes | sdkmanager "system-images;android-21;default;armeabi-v7a" && echo "no" | avdmanager create avd -n test -k "system-images;android-21;default;armeabi-v7a"
+#
+#      - run:
+#          name: Launch Emulator
+#          command: |
+#            cd ${ANDROID_HOME}/emulator;ls
+#            export LD_LIBRARY_PATH=${ANDROID_HOME}/emulator/lib64:${ANDROID_HOME}/emulator/lib64/qt/lib
+#            emulator -avd test -no-window -noaudio -no-boot-anim -no-window -accel on
+#          background: true
+#
+#      - run:
+#          command: |
+#            cd ${ANDROID_HOME}/emulator
+#            emulator -list-avds
+#          adb devices
+#
+#      - run:
+#          name: Wait emulator
+#          command: |
+#            circle-android wait-for-boot
+#            adb shell input keyevent 82
+#            adb shell dumpsys window windows
+#
+#      # run tests!
+#      - run: mvn -Dtest=AuthorizedTests test
+#      #      - run: mvn test
+#
+#      - store_artifacts:
+#          path: testApp/build/reports
+#          destination: reports
+#
+#      - store_test_results:
+#          path: testApp/build/test-results
+
+
+
+    #For UI tests
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk
+      - image: selenium/node-chrome:3.141.59-mercury
+    working_directory: ~/testApp
+    environment:
+      - MAVEN_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "pom.xml" }}
+            - v1-dependencies-
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: v1-dependencies-{{ checksum "pom.xml" }}
+      - run: mvn -Dtest=LoginTests test
