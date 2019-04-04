@@ -166,3 +166,39 @@ jobs:
 
       - store_test_results:
                 path: testApp/build/test-results
+
+
+
+
+
+
+
+
+
+#For UI tests
+#version: 2
+#jobs:
+#  build:
+#    docker:
+#      - image: circleci/openjdk:8-jdk
+#      - image: selenium/node-chrome:3.141.59-mercury
+#    working_directory: ~/testApp
+#    environment:
+#      - MAVEN_OPTS: -Xmx3200m
+#    steps:
+#      - checkout
+#      - restore_cache:
+#          keys:
+#            - v1-dependencies-{{ checksum "pom.xml" }}
+#            - v1-dependencies-
+#      - run: mvn dependency:go-offline
+#      - save_cache:
+#          paths:
+#            - ~/.m2
+#          key: v1-dependencies-{{ checksum "pom.xml" }}
+#      - run: mvn test
+#workflows:
+#  version: 2
+#  workflow:
+#    jobs:
+#      - build
