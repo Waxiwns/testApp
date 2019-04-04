@@ -41,7 +41,7 @@ jobs:
           name: Install appium server
           command: |
             sudo npm update -g
-#            sudo npm install appium
+            sudo npm install -g appium --unsafe-perm=true --allow-root
 #            sudo npm install wd
 
       - save_cache:
