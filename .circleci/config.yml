@@ -4,7 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
-      - image: selenium/node-chrome:3.141.59-mercury
+#      - image: selenium/node-chrome:3.141.59-mercury
     working_directory: ~/testApp
     environment:
       - MAVEN_OPTS: -Xmx3200m
