@@ -42,7 +42,7 @@ jobs:
           command: |
             sudo npm update -g
             sudo npm install -g appium --unsafe-perm=true --allow-root
-            sudo npm install wd
+            sudo npm install -g wd --unsafe-perm=true --allow-root
 
       - save_cache:
           paths:
