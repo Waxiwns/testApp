@@ -1,16 +1,13 @@
 package steps.web;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.JavascriptExecutor;
 import pages.web.LoginPage;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-public class LoginSteps {
+public class LoginSteps extends Steps {
     public long timeout = 6000;
     public String url = "https://merchant.regres.toyou.io/#/login";
 
@@ -35,19 +32,6 @@ public class LoginSteps {
 
     private LoginPage loginPage = new LoginPage();
 
-
-    public JavascriptExecutor getJSDriver(){
-        return (JavascriptExecutor) getWebDriver();
-    }
-
-    public void jsClickElement(SelenideElement element){
-        getJSDriver().executeScript("arguments[0].click();", element);
-
-//        executeScript All css elements
-//        String cssEl = "#submit";
-//        getJSDriver().executeScript("document.querySelectorAll('" + cssEl + "')[0].click();");
-    }
-
     public void openLoginPage(){
         printStepName();
 
@@ -60,9 +44,21 @@ public class LoginSteps {
         printStepName();
 
 //        fill values
-        loginPage.fillValues(id, pass);
+        fillValues(id, pass);
         clickLogin();
+    }
 
+    public void fillId(String id) {
+        loginPage.idInput().setValue(id);
+    }
+
+    public void fillPass(String pass) {
+        loginPage.passInput().setValue(pass);
+    }
+
+    public void fillValues(String id, String pass) {
+        fillId(id);
+        fillPass(pass);
     }
 
     public void loginBtnIsDisplayed(){
@@ -83,14 +79,6 @@ public class LoginSteps {
         printStepName();
 
         jsClickElement(loginPage.loginBtn());
-    }
-
-    public void fillValues(String id, String pass){
-        printStepName();
-
-//        fill values
-        loginPage.fillId(id);
-        loginPage.fillPass(pass);
     }
 
     public void errorMsgIsDisplayed(){
@@ -195,8 +183,8 @@ public class LoginSteps {
         printStepName();
 
 //        fill values
-        loginPage.jsFillId(id);
-        loginPage.jsFillPass(pass);
+        jsFillValue("fm-login__email", id);
+        jsFillValue(loginPage.passInput(), pass);
     }
 
     public void jsLogIn(String id, String pass){
@@ -206,27 +194,9 @@ public class LoginSteps {
         jsClickLogin();
     }
 
-    public void refreshPage(){
+    public void jsOpenAlert(String msg){
         printStepName();
 
-        loginPage.refreshPage();
-    }
-
-    public void openAlert(String msg){
-        printStepName();
-
-        loginPage.openAlert(msg);
-    }
-
-    public void visitPage(String url){
-        printStepName();
-
-        loginPage.visitPage(url);
-    }
-
-    public void printStepName(){
-        System.out.println("Step: " + new Throwable()
-                .getStackTrace()[1]
-                .getMethodName());
+        jsOpenAlert(msg);
     }
 }

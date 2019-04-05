@@ -5,7 +5,8 @@ import pages.web.DashboardPage;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 
-public class DashboardSteps {
+public class DashboardSteps extends Steps {
+
     public String txtDashMsgTitleEn = "WARNING";
     public String txtDashMsgEn = "The sound notifications about new orders are enabled.";
     public String txtDashMsgOkBtnEN = "OK";
@@ -85,6 +86,12 @@ public class DashboardSteps {
         dashboardPage.activeNaviTab().shouldHave(text(tabName));
     }
 
+    public void naviTabsSize(int size){
+        printStepName();
+
+        dashboardPage.naviTabs().shouldHaveSize(size);
+    }
+
     public void msgFormSuccessBtbDisplayed(){
         printStepName();
 
@@ -95,17 +102,5 @@ public class DashboardSteps {
         printStepName();
 
         dashboardPage.msgFormSuccessBtb().shouldNot(visible);
-    }
-
-    public void refreshPage(){
-        printStepName();
-
-        dashboardPage.refreshPage();
-    }
-
-    public void printStepName(){
-        System.out.println("Step: " + new Throwable()
-                .getStackTrace()[1]
-                .getMethodName());
     }
 }

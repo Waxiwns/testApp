@@ -118,6 +118,6 @@ public class LoginTests extends WebTests {
         printTestName();
 
         logInSteps.openLoginPage();
-        logInSteps.visitPage("http://qaru.site/questions/16404796/what-is-javascriptexecutor-in-selenium");
+        logInSteps.jsVisitPage("http://qaru.site/questions/16404796/what-is-javascriptexecutor-in-selenium");
     }
 }

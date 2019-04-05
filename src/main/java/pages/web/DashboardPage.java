@@ -2,23 +2,14 @@ package pages.web;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.JavascriptExecutor;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.Selenide.*;
 
 public class DashboardPage {
+
     private String msgForm = ".modal-content";
 
-    public JavascriptExecutor getJSDriver(){
-        return (JavascriptExecutor) getWebDriver();
-    }
-
-    public void refreshPage(){
-        getJSDriver().executeScript("history.go(0)");
-    }
 
     public SelenideElement msgFormTitle(){
         return $(msgForm + " .card-header");

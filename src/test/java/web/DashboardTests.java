@@ -16,19 +16,30 @@ public class DashboardTests extends WebTests {
 
     String localeAr = "AR";
 
+    int tabsSize = 10;
+
     private DashboardSteps dashboardSteps = new DashboardSteps();
 
     private LoginSteps logInSteps = new LoginSteps();
 
 
     @Test
-    public void loginWithValidValues() {
+    public void chooseNaviTabs() {
         printTestName();
 
         dashboardSteps.logInWithCorrectValues(id, pass);
-        sleep(5000);
 
+        dashboardSteps.naviTabsSize(tabsSize);
         dashboardSteps.chooseNaviTab("POS");
+        dashboardSteps.chooseNaviTab("PRODUCTS");
+        dashboardSteps.chooseNaviTab("OPTIONS");
+        dashboardSteps.chooseNaviTab("SCHEDULES");
+        dashboardSteps.chooseNaviTab("USERS");
+        dashboardSteps.chooseNaviTab("ORDERS");
+        dashboardSteps.chooseNaviTab("TAGS");
+        dashboardSteps.chooseNaviTab("REPORTS");
+        dashboardSteps.chooseNaviTab("TRANSACTIONS");
+        dashboardSteps.chooseNaviTab("PROFILE");
     }
 
     @Test
