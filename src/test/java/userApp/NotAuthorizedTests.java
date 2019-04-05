@@ -1,17 +1,9 @@
 package userApp;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
-import io.appium.java_client.AppiumDriver;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import steps.userApp.*;
-import utils.AppiumDriverFactory;
 
-public class NotAuthorizedTests {
-
-    int timeout = 10000;
+public class NotAuthorizedTests extends AppTests {
 
     String firstTab = "Shopping";
 
@@ -39,8 +31,6 @@ public class NotAuthorizedTests {
 
     String product = "qwerty";
 
-    private AppiumDriver driver;
-
     private AuthorizationActivitySteps authorizationSteps = new AuthorizationActivitySteps();
 
     private GeneralActivitySteps generalSteps = new GeneralActivitySteps();
@@ -58,15 +48,10 @@ public class NotAuthorizedTests {
     private StoreActivitySteps storeSteps = new StoreActivitySteps();
 
 
-    @Before
-    public void setUp() {
-        driver = AppiumDriverFactory.getAndroidDriver();
-        WebDriverRunner.setWebDriver(driver);
-        Configuration.timeout = timeout;
-    }
-
     @Test
     public void moreTab() {
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -80,6 +65,8 @@ public class NotAuthorizedTests {
 
     @Test
     public void messagesTab() {
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -93,6 +80,8 @@ public class NotAuthorizedTests {
 
     @Test
     public void ordersTab() {
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -106,6 +95,8 @@ public class NotAuthorizedTests {
 
     @Test
     public void driver() {
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -119,6 +110,8 @@ public class NotAuthorizedTests {
 
     @Test
     public void canNotShareMerchant() {
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -150,6 +143,8 @@ public class NotAuthorizedTests {
 
     @Test
     public void canNotDeliver(){
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -190,6 +185,8 @@ public class NotAuthorizedTests {
 
     @Test
     public void canNotShareProduct(){
+        printTestName();
+
         authorizationSteps.clickSkip();
         generalSteps.activeTab(firstTab);
 
@@ -212,10 +209,5 @@ public class NotAuthorizedTests {
         generalSteps.guestDescIsDisplayed(descTitle, merchantDesc);
         generalSteps.clickGetStarted();
         enterSteps.enterActivityIsDisplayed();
-    }
-
-    @After
-    public void closeApp(){
-        driver.quit();
     }
 }

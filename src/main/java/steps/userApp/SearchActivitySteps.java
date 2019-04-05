@@ -10,18 +10,30 @@ public class SearchActivitySteps {
 
 
     public void fillSearchField(String value){
+        printStepName();
+
         search.searchField().setValue(value);
     }
 
     public void chooseTab(String tabName){
+        printStepName();
+
         SelenideElement el = search.chooseTab(tabName);
         el.shouldBe(Condition.visible);
         el.click();
     }
 
     public void chooseMerchant(String title){
+        printStepName();
+
         SelenideElement el = search.merchantTitle(title);
         el.shouldBe(Condition.visible);
         el.click();
+    }
+
+    public void printStepName(){
+        System.out.println("Step: " + new Throwable()
+                .getStackTrace()[1]
+                .getMethodName());
     }
 }

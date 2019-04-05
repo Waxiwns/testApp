@@ -11,14 +11,24 @@ public class CartActivitySteps extends GeneralActivity {
 
 
     public void deliverToMe(){
+        printStepName();
+
         SelenideElement el = cart.deliverToMeBtn();
         el.shouldBe(Condition.visible);
         el.click();
     }
 
     public void deliverToFriend(){
+        printStepName();
+
         SelenideElement el = cart.deliverToFriendBtn();
         el.shouldBe(Condition.visible);
         el.click();
+    }
+
+    public void printStepName(){
+        System.out.println("Step: " + new Throwable()
+                .getStackTrace()[1]
+                .getMethodName());
     }
 }

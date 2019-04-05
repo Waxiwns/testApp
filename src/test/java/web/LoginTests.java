@@ -1,17 +1,10 @@
 package web;
 
-import com.codeborne.selenide.Configuration;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
+import steps.web.DashboardSteps;
 import steps.web.LoginSteps;
 
-import static com.codeborne.selenide.Selenide.close;
-
-public class LoginTests {
-
-//    Boolean headless = false;
-    Boolean headless = true;
+public class LoginTests extends WebTests {
 
     String id = "ejisko@gmail.com";
 
@@ -23,114 +16,108 @@ public class LoginTests {
 
     String localeAr = "AR";
 
+    private LoginSteps logInSteps = new LoginSteps();
+    private DashboardSteps dashboardSteps = new DashboardSteps();
 
-    private LoginSteps step = new LoginSteps();
-
-    @Before
-    public void setConfiguration(){
-        Configuration.headless = headless;
-    }
 
     @Test
-    public void loginWithValidValues() {
-        step.openLoginPage();
-        step.logInWithCorrectValues(id, pass);
+    public void logInWithCorrectValues() {
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.logInWithCorrectValues(id, pass);
+
+        dashboardSteps.closeMsgForm();
+        dashboardSteps.logoutBtnIsDisplayed();
     }
 
     @Test
     public void loginWithUppercaseId() {
-        step.openLoginPage();
-        step.logInWithCorrectValues(id.toUpperCase(), pass);
+        printTestName();
+
+        logInSteps.logInWithCorrectValues(id.toUpperCase(), pass);
+
+        dashboardSteps.closeMsgForm();
+        dashboardSteps.logoutBtnIsDisplayed();
     }
 
     @Test
     public void loginWithSpacesBeforeAndAfterId() {
+        printTestName();
+
         id = " " + id + " ";
 
-        step.openLoginPage();
-        step.logInWithCorrectValues(id, pass);
+        logInSteps.logInWithCorrectValues(id, pass);
+
+        dashboardSteps.closeMsgForm();
+        dashboardSteps.logoutBtnIsDisplayed();
     }
 
     @Test
     public void loginWithIncorrectPass() {
-        step.openLoginPage();
-        step.logInWithIncorrectValues(id, incorrectValue);
-        step.errorMsgDisappeared();
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.logInWithIncorrectValues(id, incorrectValue);
+        logInSteps.errorMsgDisappeared();
     }
 
     @Test
     public void loginWithIncorrectId() {
-        step.openLoginPage();
-        step.logInWithIncorrectValues(incorrectValue, pass);
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.logInWithIncorrectValues(incorrectValue, pass);
     }
 
     @Test
     public void loginWithIncorrectValues() {
-        step.openLoginPage();
-        step.logInWithIncorrectValues(incorrectValue, incorrectValue);
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.logInWithIncorrectValues(incorrectValue, incorrectValue);
     }
 
     @Test
     public void loginWithConverselyValues() {
-        step.openLoginPage();
-        step.logInWithIncorrectValues(pass, id);
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.logInWithIncorrectValues(pass, id);
     }
 
     @Test
     public void changeLocale() {
-        step.openLoginPage();
-        step.shouldBeLocale(localeEn);
-        step.changeLocaleTo(localeAr);
-        step.shouldBeLocale(localeAr);
-        step.changeLocaleTo(localeEn);
-        step.shouldBeLocale(localeEn);
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.shouldBeLocale(localeEn);
+        logInSteps.changeLocaleTo(localeAr);
+        logInSteps.shouldBeLocale(localeAr);
+        logInSteps.changeLocaleTo(localeEn);
+        logInSteps.shouldBeLocale(localeEn);
     }
 
     @Test
     public void changeLocaleErrorMsg() {
-        step.openLoginPage();
-        step.shouldBeLocale(localeEn);
+        printTestName();
+
+        logInSteps.openLoginPage();
+        logInSteps.shouldBeLocale(localeEn);
 
 //        login with incorrect values to show error message
-        step.logInWithIncorrectValues(incorrectValue, incorrectValue);
-        step.errorMsgShouldBeLocale(localeEn);
+        logInSteps.logInWithIncorrectValues(incorrectValue, incorrectValue);
+        logInSteps.errorMsgShouldBeLocale(localeEn);
 
-        step.changeLocaleTo(localeAr);
-        step.errorMsgShouldBeLocale(localeAr);
+        logInSteps.changeLocaleTo(localeAr);
+        logInSteps.errorMsgShouldBeLocale(localeAr);
     }
 
-    @Test
-    public void correctDashboardLocale() {
-        step.openLoginPage();
-        step.shouldBeLocale(localeEn);
-
-//        login with correct values
-        step.logIn(id, pass);
-
-//        expect locale
-        step.dashboardMsgShouldBeLocale(localeEn);
-
-        step.closeMsgForm();
-        step.logOut();
-
-//        change locale to arabic
-        step.changeLocaleTo(localeAr);
-        step.shouldBeLocale(localeAr);
-
-//        login with correct values
-        step.logIn(id, pass);
-
-//        expect locale
-        step.dashboardMsgShouldBeLocale(localeAr);
-    }
     @Test
     public void jsExecute(){
-        step.openLoginPage();
-        step.visitPage("http://qaru.site/questions/16404796/what-is-javascriptexecutor-in-selenium");
-    }
+        printTestName();
 
-    @After
-    public void closeBrowser(){
-        close();
+        logInSteps.openLoginPage();
+        logInSteps.visitPage("http://qaru.site/questions/16404796/what-is-javascriptexecutor-in-selenium");
     }
 }

@@ -15,20 +15,32 @@ public class StoreActivitySteps extends GeneralActivity {
     }
 
     public void shareStore(){
+        printStepName();
+
         SelenideElement el = store.shareBtn();
         el.shouldBe(Condition.visible);
         el.click();
     }
 
     public void addProductToCart(String product){
+        printStepName();
+
         SelenideElement el = store.productPrice(product);
         el.shouldBe(Condition.visible);
         el.click();
     }
 
     public void openProduct(String product){
+        printStepName();
+
         SelenideElement el = store.productTitle(product);
         el.shouldBe(Condition.visible);
         el.click();
+    }
+
+    public void printStepName(){
+        System.out.println("Step: " + new Throwable()
+                .getStackTrace()[1]
+                .getMethodName());
     }
 }

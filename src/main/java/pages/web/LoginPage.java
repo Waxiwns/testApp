@@ -4,7 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -14,14 +13,6 @@ public class LoginPage {
 
     public JavascriptExecutor getJSDriver(){
         return (JavascriptExecutor) getWebDriver();
-    }
-
-    public void jsClickElement(SelenideElement element){
-//        getJSDriver().executeScript("arguments[0].click();", element);
-
-//        executeScript All css elements
-        String cssEl = "#submit";
-        getJSDriver().executeScript("document.querySelectorAll('" + cssEl + "')[0].click();");
     }
 
     public SelenideElement loginBlockTitle(){
@@ -65,14 +56,6 @@ public class LoginPage {
         return $(".simple-notification-wrapper .sn-content");
     }
 
-    public void errorMsgIsDisplayed(){
-        errorMsg().isDisplayed();
-    }
-
-    public void errorMsgIsNotDisplayed(){
-        errorMsg().shouldNot(visible);
-    }
-
     public void fillId(String id) {
         idInput().setValue(id);
     }
@@ -85,7 +68,6 @@ public class LoginPage {
         getJSDriver().executeScript("document.getElementById('fm-login__email').value='" + id + "';");
 //        or
 //        getJSDriver().executeScript("arguments[0].value='" + id + "';", idInput());
-
     }
 
     public void jsFillPass(String pass) {
@@ -94,23 +76,9 @@ public class LoginPage {
         getJSDriver().executeScript("arguments[0].value='" + pass + "';", passInput());
     }
 
-    public void clickLogin() {
-        loginBtn().hover();
-        loginBtn().click();
-    }
-
-    public void jsClickLogin(){
-        jsClickElement(loginBtn());
-    }
-
     public void fillValues(String id, String pass) {
         fillId(id);
         fillPass(pass);
-    }
-
-    public void loginBtnIsDisplayed(){
-//        wait for login button
-        loginBtn().isDisplayed();
     }
 
     public void refreshPage(){

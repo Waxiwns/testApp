@@ -1,21 +1,14 @@
 package userApp;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
-import io.appium.java_client.AppiumDriver;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import steps.userApp.AuthorizationActivitySteps;
 import steps.userApp.EnterToYouActivitySteps;
 import steps.userApp.GeneralActivitySteps;
 import steps.userApp.MoreTabSteps;
+import steps.web.DashboardSteps;
 import steps.web.LoginSteps;
-import utils.AppiumDriverFactory;
 
-public class AuthorizedTests {
-
-    int timeout = 10000;
+public class AuthorizedTests extends AppTests {
 
     String firstTab = "Shopping";
 
@@ -29,8 +22,6 @@ public class AuthorizedTests {
 
     String secondName = "Test";
 
-    private AppiumDriver driver;
-
     private AuthorizationActivitySteps authorizationSteps = new AuthorizationActivitySteps();
 
     private GeneralActivitySteps generalSteps = new GeneralActivitySteps();
@@ -39,19 +30,15 @@ public class AuthorizedTests {
 
     private MoreTabSteps moreSteps = new MoreTabSteps();
 
-    private LoginSteps step = new LoginSteps();
+    private LoginSteps loginSteps = new LoginSteps();
 
+    private DashboardSteps dashboardSteps = new DashboardSteps();
 
-
-    @Before
-    public void setUp() {
-        driver = AppiumDriverFactory.getAndroidDriver();
-        WebDriverRunner.setWebDriver(driver);
-        Configuration.timeout = timeout;
-    }
 
     @Test
     public void authorizeAndGoMore() {
+        printTestName();
+
         authorizationSteps.clickStarted();
         enterSteps.enterActivityIsDisplayed();
 
@@ -66,19 +53,20 @@ public class AuthorizedTests {
     }
 
     @Test
-    public void loginWithValidValues() {
-        System.out.println("CONNECTED");
+//    Set MobileCapabilityType.BROWSER_NAME, "Chrome" in AppiumDriverFactory to run this test
+    public void logInWithCorrectValues() {
+        printTestName();
+
         String id = "ejisko@gmail.com";
 
         String pass = "0000";
 
-        step.openLoginPage();
-        step.logInWithCorrectValues(id, pass);
-        System.out.println("Login successful");
-    }
+        loginSteps.openLoginPage();
+        loginSteps.logInWithCorrectValues(id, pass);
 
-    @After
-    public void closeApp(){
-        driver.quit();
+        dashboardSteps.closeMsgForm();
+        dashboardSteps.logoutBtnIsDisplayed();
+
+        System.out.println("Login successful");
     }
 }

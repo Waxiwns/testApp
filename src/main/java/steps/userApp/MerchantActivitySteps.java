@@ -11,14 +11,24 @@ public class MerchantActivitySteps extends GeneralActivity {
 
 
     public void merchantAllProducts(){
+        printStepName();
+
         SelenideElement el = merchant.allProductsBtn();
         el.shouldBe(Condition.visible);
         el.click();
     }
 
     public void shareMerchant(){
+        printStepName();
+
         SelenideElement el = merchant.shareBtn();
         el.shouldBe(Condition.visible);
         el.click();
+    }
+
+    public void printStepName(){
+        System.out.println("Step: " + new Throwable()
+                .getStackTrace()[1]
+                .getMethodName());
     }
 }

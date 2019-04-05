@@ -64,12 +64,13 @@ public class AppiumDriverFactory {
         capabilities.setCapability("autoGrantPermissions", true);
 
 //        capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
-        capabilities.setCapability("appPackage", "com.android.launcher");
-        capabilities.setCapability("appActivity", "com.android.launcher2.Launcher");
-//        capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
-//        capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
-//        capabilities.setCapability("appPackage", "com.android.settings");
-//        capabilities.setCapability("appActivity", "com.android.settings.Settings");
+//        capabilities.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir") + "\\src\\main\\java\\utils\\Google+Chrome+73.0.3683.75.apk");
+
+//        capabilities.setCapability("appWaitPackage", "com.android.launcher");
+//        capabilities.setCapability("appWaitActivity", "com.android.launcher2.Launcher");
+        capabilities.setCapability("appPackage", "com.arammeem.toyou.android.regression");
+        capabilities.setCapability("appActivity", "com.arammeem.toyou.android.app.ui.authorization.AuthorizationActivity");
+
         return capabilities;
     }
 

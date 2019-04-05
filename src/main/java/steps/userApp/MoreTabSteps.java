@@ -9,10 +9,20 @@ public class MoreTabSteps extends GeneralActivitySteps {
 
 
     public String getUserName(){
+        printStepName();
+
         return more.userName().text();
     }
 
     public void userNameShouldBe(String userName){
+        printStepName();
+
         more.userName().shouldHave(Condition.text(userName));
+    }
+
+    public void printStepName(){
+        System.out.println("Step: " + new Throwable()
+                .getStackTrace()[1]
+                .getMethodName());
     }
 }
