@@ -38,6 +38,12 @@ public class Steps {
         executeJavaScript("arguments[0].click();", element);
     }
 
+//    for dynamic items
+    public void getPageDom(){
+        printStepName();
+        executeJavaScript("return document.documentElement.outerHTML");
+    }
+
     public ElementsCollection jsAllCssElements(String css){
         printStepName();
 
