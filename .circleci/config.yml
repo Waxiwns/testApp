@@ -100,7 +100,7 @@ jobs:
           command: |
             cd ${ANDROID_HOME}/emulator
             emulator -list-avds
-          adb devices
+            adb devices
 
       - run:
           name: Wait emulator
