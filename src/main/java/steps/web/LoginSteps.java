@@ -32,7 +32,7 @@ public class LoginSteps extends Steps {
 
     private LoginPage loginPage = new LoginPage();
 
-    public void openLoginPage(){
+    public void openLoginPage() {
         printStepName();
 
         open(url);
@@ -40,7 +40,7 @@ public class LoginSteps extends Steps {
         loginBtnIsDisplayed();
     }
 
-    public void logIn(String id, String pass){
+    public void logIn(String id, String pass) {
         printStepName();
 
 //        fill values
@@ -61,39 +61,39 @@ public class LoginSteps extends Steps {
         fillPass(pass);
     }
 
-    public void loginBtnIsDisplayed(){
+    public void loginBtnIsDisplayed() {
         printStepName();
 
 //        wait for login button
         loginPage.loginBtn().isDisplayed();
     }
 
-    public void clickLogin(){
+    public void clickLogin() {
         printStepName();
 
         loginPage.loginBtn().hover();
         loginPage.loginBtn().click();
     }
 
-    public void jsClickLogin(){
+    public void jsClickLogin() {
         printStepName();
 
         jsClickElement(loginPage.loginBtn());
     }
 
-    public void errorMsgIsDisplayed(){
+    public void errorMsgIsDisplayed() {
         printStepName();
 
         loginPage.errorMsg().isDisplayed();
     }
 
-    public void errorMsgIsNotDisplayed(){
+    public void errorMsgIsNotDisplayed() {
         printStepName();
 
         loginPage.errorMsg().shouldNot(visible);
     }
 
-    public void logInWithCorrectValues(String id, String pass){
+    public void logInWithCorrectValues(String id, String pass) {
         printStepName();
 
         openLoginPage();
@@ -101,7 +101,7 @@ public class LoginSteps extends Steps {
         logIn(id, pass);
     }
 
-    public void logInWithIncorrectValues(String id, String pass){
+    public void logInWithIncorrectValues(String id, String pass) {
         printStepName();
 
         logIn(id, pass);
@@ -110,7 +110,7 @@ public class LoginSteps extends Steps {
         errorMsgIsDisplayed();
     }
 
-    public void errorMsgDisappeared(){
+    public void errorMsgDisappeared() {
         printStepName();
 
         errorMsgIsDisplayed();
@@ -120,17 +120,17 @@ public class LoginSteps extends Steps {
         errorMsgIsNotDisplayed();
     }
 
-    public void changeLocaleTo(String lang){
+    public void changeLocaleTo(String lang) {
         printStepName();
 
         loginPage.languageDrop().click();
         loginPage.languageDropItem(lang).click();
     }
 
-    public void shouldBeLocale(String locale){
+    public void shouldBeLocale(String locale) {
         printStepName();
 
-        switch (locale){
+        switch (locale) {
             case ("EN"):
                 loginPage.loginBlockTitle().shouldHave(text(txtLoginBlockTitleEn));
                 loginPage.formTitle().shouldHave(text(txtFormTitleEn));
@@ -150,7 +150,7 @@ public class LoginSteps extends Steps {
         }
     }
 
-    public void errorMsgEn(){
+    public void errorMsgEn() {
         printStepName();
 
         errorMsgIsDisplayed();
@@ -158,7 +158,7 @@ public class LoginSteps extends Steps {
         loginPage.errorMsg().shouldHave(text(txtErrorMsgEn));
     }
 
-    public void errorMsgAr(){
+    public void errorMsgAr() {
         printStepName();
 
         errorMsgIsDisplayed();
@@ -166,10 +166,10 @@ public class LoginSteps extends Steps {
         loginPage.errorMsg().shouldHave(text(txtErrorMsgAr));
     }
 
-    public void errorMsgShouldBeLocale(String locale){
+    public void errorMsgShouldBeLocale(String locale) {
         printStepName();
 
-        switch (locale){
+        switch (locale) {
             case ("EN"):
                 errorMsgEn();
                 break;
@@ -179,7 +179,7 @@ public class LoginSteps extends Steps {
         }
     }
 
-    public void jsFillValues(String id, String pass){
+    public void jsFillValues(String id, String pass) {
         printStepName();
 
 //        fill values
@@ -187,14 +187,14 @@ public class LoginSteps extends Steps {
         jsFillValue(loginPage.passInput(), pass);
     }
 
-    public void jsLogIn(String id, String pass){
+    public void jsLogIn(String id, String pass) {
         printStepName();
 
         jsFillValues(id, pass);
         jsClickLogin();
     }
 
-    public void jsOpenAlert(String msg){
+    public void jsOpenAlert(String msg) {
         printStepName();
 
         jsOpenAlert(msg);
