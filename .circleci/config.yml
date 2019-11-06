@@ -22,7 +22,7 @@ jobs:
       - run: mvn -Dtest=LoginPageTest test
       - run:
           name: Allure Report
-          command: mvn allure:report
+          command: mvn allure:serve
           when: always
 
 ##   For Android Tests
